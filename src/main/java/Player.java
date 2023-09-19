@@ -12,13 +12,10 @@ public class Player {
     }
 
     public boolean put(Board board, int column) {
-        boolean empty = board.eneableColumn(column);
+        boolean empty = board.enableColumn(column);
         if(empty)
             return board.dropPiece(column, this.color);
-        else {
-            System.out.println("Error la columna ya est� llena");
-            return false;
-        }
+        return false;
     }
 
     public Token getColor() {

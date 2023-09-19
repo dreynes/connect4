@@ -40,7 +40,7 @@ public class Connect4 {
 
         int column;
         do {
-            System.out.print("Ingrese la columna (0-6) para colocar su ficha: ");
+            Message.DropToken.writeln();
             column = scanner.nextInt();
         } while (column < 0 || column > 6);
 

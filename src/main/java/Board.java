@@ -24,7 +24,7 @@ public class Board {
         return false;
     }
 
-    public boolean eneableColumn(int column) {
+    public boolean enableColumn(int column) {
 
         if (column < 0 || column > 6 ) {
             Error.OutOfRange.writeln();
