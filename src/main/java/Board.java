@@ -26,9 +26,17 @@ public class Board {
 
     public boolean eneableColumn(int column) {
 
-        if (column < 0 || column > 6 || tokens[5][column] != Token.NONE) {
+        if (column < 0 || column > 6 ) {
+            Error.OutOfRange.writeln();
             return false;
         }
+
+        if(tokens[5][column] != Token.NONE) {
+            Error.ColumnFull.writeln();
+            return false;
+        }
+
+
         return true;
     }
 

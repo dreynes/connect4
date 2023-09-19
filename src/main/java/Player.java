@@ -21,10 +21,6 @@ public class Player {
         }
     }
 
-    public void victory() {
-        System.out.println("El jugador con " + color + "" + " ha ganado!!!!");
-    }
-
     public Token getColor() {
         return color;
     }

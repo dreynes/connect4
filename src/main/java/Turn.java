@@ -1,7 +1,7 @@
 
 public class Turn {
 
-    private int value = 0;
+    private int value;
 
     private Player[] players;
 

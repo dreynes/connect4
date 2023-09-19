@@ -7,7 +7,7 @@ public enum Token {
 
     private char value;
 
-    private  Token(char value){
+    Token(char value){
         this.value = value;
     }
 

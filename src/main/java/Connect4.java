@@ -18,24 +18,23 @@ public class Connect4 {
         Scanner scanner = new Scanner(System.in);
         while(!endGame) {
             board.printBoard();
-            System.out.println("Turno del Jugador " + turn.getColor().getToken());
+            Message.Turn.writeln(turn.getColor());
             column = readMove(scanner);
             if(turn.getPlayer().put(board, column)) {
                 turn.change();
             }
             if(board.checkVictory(turn.previousPlayerColor())) {
                 board.printBoard();
-                turn.previousPlayer().victory();
+                Message.Win.writeln(turn.previousPlayerColor());
                 endGame = true;
             }
             if(board.isBoardFull()) {
-                System.out.println("El juego ha terminado en empate.");
+                Message.Draws.writeln();
                 endGame = true;
             }
         }
         scanner.close();
     }
-
 
     public int readMove(Scanner scanner) {
 
