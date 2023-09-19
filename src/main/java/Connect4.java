@@ -23,7 +23,7 @@ public class Connect4 {
             if(turn.getPlayer().put(board, column)) {
                 turn.change();
             }
-            if(board.checkVictory(turn.getColor())) {
+            if(board.checkVictory(turn.previousPlayerColor())) {
                 board.printBoard();
                 turn.previousPlayer().victory();
                 endGame = true;

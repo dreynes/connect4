@@ -19,6 +19,10 @@ public class Turn {
         return players[value].getColor();
     }
 
+    public Token previousPlayerColor() {
+        return previousPlayer().getColor();
+    }
+
     public Player getPlayer() {
         return players[value];
     }
