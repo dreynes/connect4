@@ -1,0 +1,65 @@
+@startuml Connect4
+namespace Connect4 {
+
+  class Connect4{
+    -board : Board
+    -turn: Turn
+    ~ Connect4()
+    - play()
+    + {static} main(String[])
+  }
+
+  class Board {
+    - tokens: Token[][]
+    ~ Board()
+    ~ write()
+    ~ put(Column, Token)
+    ~ isFull(): boolean
+    ~ isEmpty(Column): boolean
+    ~ isVictory(Token): boolean
+  }
+
+  class Turn {
+    - value: Int
+    - players: Player[]
+    ~ Turn(Board)
+    ~ play()
+    ~ getPlayer(): Player
+    ~ previousPlayer(): Player
+    ~ getToken(): Token
+  }
+
+  class Player {
+    - color: Token
+    ~ Player(Token)
+    ~ askForColumn(): unsigne
+    ~ put(Board, columna)
+    ~ getColor(): Token
+  }
+
+  enum Token {
+    - RED
+    - YELLOW
+    - EMPTY
+  }
+
+  class Solution {
+    ~ Solution()
+    ~ vertical(Board)
+    ~ horizontal(Board)
+    ~ ascendentDiagonal(Board)
+    ~ descendentDiagonal(Board)
+  }
+
+  Connect4 *-down-> Board
+  Connect4 *-down-> Turn
+  Player *-down-> Board
+  Turn *-down-> "2" Player
+  Player *-down-> Token
+  Board *-down->Solution
+  Board .down->Token
+  Turn .down->Token
+
+}
+
+@enduml
