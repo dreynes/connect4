@@ -1,7 +1,7 @@
 public class Solution {
-    public boolean checkVictoryVertical(Board board, Token color) {
-        for (int column = 0; column < 6; column++) {
-            for (int row = 0; row <= 2; row++) {
+    public boolean checkVictoryHorizontal(Board board, Token color) {
+        for (int row = 0; row < Constant.numRows; row++) {
+            for (int column = 0; column < Constant.numColumns-4; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
                     board.getColorOnPosition(row, column + 1) == color &&
                     board.getColorOnPosition(row, column + 2) == color &&
@@ -13,9 +13,9 @@ public class Solution {
         return false;
     }
 
-    public boolean checkVictoryHorizontal(Board board, Token color) {
-        for (int row = 0; row <= 3; row++) {
-            for (int column = 0; column < 6; column++) {
+    public boolean checkVictoryVertical(Board board, Token color) {
+        for (int row = 0; row < Constant.numRows-4; row++) {
+            for (int column = 0; column < Constant.numColumns; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
                     board.getColorOnPosition(row + 1, column) == color &&
                     board.getColorOnPosition(row + 2, column) == color &&
@@ -29,12 +29,12 @@ public class Solution {
 
     public boolean checkVictoryDiagonalDesc(Board board, Token color) {
 
-        for (int row = 0; row < 3; row++) {
-            for (int column = 5; column >= 4; column--) {
+        for (int row = 5; row > Constant.numRows-4; row--) {
+            for (int column = 0; column < Constant.numColumns-4; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
-                    board.getColorOnPosition(row + 1, column - 1) == color &&
-                    board.getColorOnPosition(row + 2, column - 2) == color &&
-                    board.getColorOnPosition(row + 3, column - 3) == color) {
+                    board.getColorOnPosition(row - 1, column + 1) == color &&
+                    board.getColorOnPosition(row - 2, column + 2) == color &&
+                    board.getColorOnPosition(row - 3, column + 3) == color) {
                     return true;
                 }
             }
@@ -43,8 +43,8 @@ public class Solution {
     }
 
     public boolean checkVictoryDiagonalAsc(Board board, Token color) {
-        for (int column = 0; column <= 3; column++) {
-            for (int row = 0; row <= 2; row++) {
+        for (int row = 0; row < Constant.numRows-4; row++) {
+            for (int column = 0; column < Constant.numColumns-4; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
                     board.getColorOnPosition(row + 1, column + 1) == color &&
                     board.getColorOnPosition(row + 2, column + 2) == color &&

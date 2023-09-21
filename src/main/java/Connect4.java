@@ -42,7 +42,7 @@ public class Connect4 {
         do {
             Message.DropToken.writeln();
             column = scanner.nextInt();
-        } while (column < 0 || column > 6);
+        } while (column < 0 || column > Constant.numColumns-1);
 
         return column;
     }

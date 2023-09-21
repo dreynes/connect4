@@ -6,10 +6,9 @@ public class Turn {
     private Player[] players;
 
     public Turn() {
-        players = new Player[2];
-        for(int i=0; i<2; i++){
-            players[i] = new Player(i);
-        }
+        players = new Player[Constant.numPlayers];
+        players[0] = new Player('x');
+        players[1] = new Player('o');
         value = 0;
 
     }

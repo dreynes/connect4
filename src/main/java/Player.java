@@ -3,8 +3,8 @@ public class Player {
 
     Token color;
 
-    public Player(int i) {
-        if (i == 0) {
+    public Player(char piece) {
+        if (piece == 'x') {
             color = Token.XS;
         } else {
             color = Token.OS;

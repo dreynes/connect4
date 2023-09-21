@@ -5,9 +5,9 @@ public class Board {
     private Solution solution;
 
     public Board() {
-        tokens = new Token[6][7];
-        for (int row = 0; row < 6; row++) {
-            for (int column = 0; column < 7; column++) {
+        tokens = new Token[Constant.numRows][Constant.numColumns];
+        for (int row = 0; row < Constant.numRows; row++) {
+            for (int column = 0; column < Constant.numColumns; column++) {
                 tokens[row][column] = Token.NONE;
             }
         }
@@ -15,7 +15,7 @@ public class Board {
     }
 
     public boolean dropPiece(int column, Token color) {
-        for (int row = 0; row < 6 ; row++) {
+        for (int row = 0; row < Constant.numRows ; row++) {
             if (tokens[row][column] == Token.NONE) {
                 tokens[row][column] = color;
                 return true;
@@ -26,7 +26,7 @@ public class Board {
 
     public boolean enableColumn(int column) {
 
-        if (column < 0 || column > 6 ) {
+        if (column < 0 || column > Constant.numColumns-1 ) {
             Error.OutOfRange.writeln();
             return false;
         }
@@ -48,17 +48,17 @@ public class Board {
     }
 
     public void printBoard() {
-        for (int i = 5; i >=0; i--) {
-            for (int j = 0; j < 7; j++) {
-                System.out.print(tokens[i][j].getToken() + " ");
+        for (int row = Constant.numRows-1; row >=0; row--) {
+            for (int column = 0; column < Constant.numColumns; column++) {
+                System.out.print(tokens[row][column].getToken() + " ");
             }
             System.out.println();
         }
     }
 
     public boolean isBoardFull() {
-        for (int column = 0; column < 6; column++) {
-            for (int row = 0; row < 5; row++) {
+        for (int column = 0; column < Constant.numColumns; column++) {
+            for (int row = 0; row < Constant.numRows; row++) {
                 if (tokens[row][column] == Token.NONE) {
                     return false;
                 }
