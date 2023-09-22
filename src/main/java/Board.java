@@ -54,7 +54,7 @@ public class Board {
     public boolean isBoardFull() {
         for (int column = 0; column < Constant.numColumns; column++) {
             for (int row = 0; row < Constant.numRows; row++) {
-                if (tokens[row][column] == Token.NONE) {
+                if (isTokenNone(row, column)) {
                     return false;
                 }
             }
@@ -64,5 +64,9 @@ public class Board {
 
     public Token getColorOnPosition(int row, int column) {
         return tokens[row][column];
+    }
+
+    public boolean isTokenNone(int row, int column) {
+        return tokens[row][column] == Token.NONE;
     }
 }
