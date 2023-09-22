@@ -14,7 +14,7 @@ public class Solution {
     }
 
     public boolean checkVictoryVertical(Board board, Token color) {
-        for (int row = 0; row < Constant.numRows-3; row++) {
+        for (int row = 0; row < Constant.numRows - 3; row++) {
             for (int column = 0; column < Constant.numColumns; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
                     board.getColorOnPosition(row + 1, column) == color &&
@@ -28,9 +28,8 @@ public class Solution {
     }
 
     public boolean checkVictoryDiagonalDesc(Board board, Token color) {
-
-        for (int row = 5; row > Constant.numRows-3; row--) {
-            for (int column = 0; column < Constant.numColumns-3; column++) {
+        for (int row = 5; row > Constant.numRows - 3; row--) {
+            for (int column = 0; column < Constant.numColumns - 3; column++) {
                 if (board.getColorOnPosition(row, column) == color &&
                     board.getColorOnPosition(row - 1, column + 1) == color &&
                     board.getColorOnPosition(row - 2, column + 2) == color &&

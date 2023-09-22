@@ -2,11 +2,11 @@
 public class Turn {
 
     private int value;
-
+    private final int numPlayers = 2;
     private Player[] players;
 
     public Turn() {
-        players = new Player[Constant.numPlayers];
+        players = new Player[numPlayers];
         players[0] = new Player('x');
         players[1] = new Player('o');
         value = 0;
@@ -27,7 +27,7 @@ public class Turn {
     }
 
     public int alternateValue() {
-        return (value + 1) % Constant.numPlayers;
+        return (value + 1) % numPlayers;
     }
 
     public Player previousPlayer() {
