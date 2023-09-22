@@ -26,12 +26,16 @@ public class Turn {
         return players[value];
     }
 
+    public int alternateValue() {
+        return (value + 1) % Constant.numPlayers;
+    }
+
     public Player previousPlayer() {
-        return players[(value +1)% 2];
+        return players[alternateValue()];
     }
 
     public void change() {
-        value = (value +1)% 2;
+        value = alternateValue();
     }
 
 }

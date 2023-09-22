@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Connect4 {
-
     private Board board;
 
     private Turn turn;
@@ -36,7 +35,6 @@ public class Connect4 {
     }
 
     public int readMove(Scanner scanner) {
-
         int column;
         do {
             Message.DropToken.writeln();
