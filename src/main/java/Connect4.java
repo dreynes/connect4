@@ -9,7 +9,6 @@ public class Connect4 {
     public Connect4() {
         board = new Board();
         turn = new Turn();
-
     }
 
     public void play() {
@@ -51,8 +50,5 @@ public class Connect4 {
     public static void main(String[] args) {
         Connect4 connect4 = new Connect4();
         connect4.play();
-
     }
-
-
 }

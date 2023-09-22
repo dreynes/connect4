@@ -1,6 +1,5 @@
 
 public class Board {
-
     private Token[][] tokens;
     private Solution solution;
 
@@ -25,26 +24,22 @@ public class Board {
     }
 
     public boolean enableColumn(int column) {
-
         if (column < 0 || column > Constant.numColumns-1 ) {
             Error.OutOfRange.writeln();
             return false;
         }
-
         if(tokens[5][column] != Token.NONE) {
             Error.ColumnFull.writeln();
             return false;
         }
-
-
         return true;
     }
 
     public boolean checkVictory(Token color) {
-
-        return  solution.checkVictoryHorizontal(this, color) || solution.checkVictoryVertical(this, color)
-                || solution.checkVictoryDiagonalAsc(this, color) || solution.checkVictoryDiagonalDesc(this, color);
-
+        return  solution.checkVictoryHorizontal(this, color) ||
+                solution.checkVictoryVertical(this, color) ||
+                solution.checkVictoryDiagonalAsc(this, color) ||
+                solution.checkVictoryDiagonalDesc(this, color);
     }
 
     public void printBoard() {
