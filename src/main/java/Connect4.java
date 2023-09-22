@@ -15,14 +15,14 @@ public class Connect4 {
         int column;
         Scanner scanner = new Scanner(System.in);
         while(!endGame) {
-            board.printBoard();
-            Message.Turn.writeln(turn.getColor());
+            board.print();
+            Message.Turn.writeln(turn.playerColor());
             column = readMove(scanner);
-            if(turn.getPlayer().put(board, column)) {
-                turn.change();
+            if(turn.player().put(board, column)) {
+                turn.changeValue();
             }
             if(board.checkVictory(turn.previousPlayerColor())) {
-                board.printBoard();
+                board.print();
                 Message.Win.writeln(turn.previousPlayerColor());
                 endGame = true;
             }

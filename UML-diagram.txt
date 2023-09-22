@@ -2,49 +2,63 @@
 namespace Connect4 {
 
   class Connect4{
-    -board : Board
-    -turn: Turn
-    ~ Connect4()
-    - play()
+    - board : Board
+    - turn: Turn
+    + Connect4()
+    + play()
+    + readMove(Scanner): int
     + {static} main(String[])
   }
 
   class Board {
     - tokens: Token[][]
+    - solution: Solution
     ~ Board()
-    ~ write()
-    ~ put(Column, Token)
-    ~ isFull(): boolean
-    ~ isEmpty(Column): boolean
-    ~ isVictory(Token): boolean
+    ~ dropPiece(column, token): boolean
+    ~ enableColumn(column): boolean
+    ~ checkVictory(Token): boolean
+    ~ print()
+    ~ isBoardFull(): boolean
+    ~ getColorOnPosition(row, column): Token
+    ~ isTokenNone(row, column): Token
   }
 
   class Turn {
+    - NUM_PLAYERS
     - value: Int
     - players: Player[]
     ~ Turn(Board)
-    ~ play()
-    ~ getPlayer(): Player
+    ~ player(): Player
+    ~ playerColor(): Token
     ~ previousPlayer(): Player
-    ~ getToken(): Token
+    ~ previousPlayerColor(): Token
+    ~ alternateValue(): int
+    ~ changeValue()
   }
 
   class Player {
     - color: Token
     ~ Player(Token)
-    ~ askForColumn(): unsigne
     ~ put(Board, columna)
     ~ getColor(): Token
+    ~ askForColumn()
   }
 
   enum Token {
-    - RED
-    - YELLOW
-    - EMPTY
+    XS
+    OS
+    NONE
+    ~ Token(value)
+    ~ getToken()
+  }
+
+  enum Error {
+    OUT_OF_RANGE
+    COLUMN_FULL
+    ~ writeLn()
   }
 
   class Solution {
-    ~ Solution()
     ~ vertical(Board)
     ~ horizontal(Board)
     ~ ascendentDiagonal(Board)
@@ -58,8 +72,7 @@ namespace Connect4 {
   Player *-down-> Token
   Board *-down->Solution
   Board .down->Token
-  Turn .down->Token
-
+  Board .down->Error
 }
 
 @enduml

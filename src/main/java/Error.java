@@ -1,7 +1,7 @@
 public enum Error {
 
-    OutOfRange("Esta columna no existe"),
-    ColumnFull("Esta columna está llena");
+    OUT_OF_RANGE("Esta columna no existe"),
+    COLUMN_FULL("Esta columna está llena");
 
     private String error;
 

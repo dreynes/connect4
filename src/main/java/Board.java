@@ -25,11 +25,11 @@ public class Board {
 
     public boolean enableColumn(int column) {
         if (column < 0 || column > Constant.numColumns-1 ) {
-            Error.OutOfRange.writeln();
+            Error.OUT_OF_RANGE.writeln();
             return false;
         }
         if(tokens[5][column] != Token.NONE) {
-            Error.ColumnFull.writeln();
+            Error.COLUMN_FULL.writeln();
             return false;
         }
         return true;
@@ -42,7 +42,7 @@ public class Board {
                 solution.checkVictoryDiagonalDesc(this, color);
     }
 
-    public void printBoard() {
+    public void print() {
         for (int row = Constant.numRows-1; row >=0; row--) {
             for (int column = 0; column < Constant.numColumns; column++) {
                 System.out.print(tokens[row][column].getToken() + " ");
@@ -67,6 +67,6 @@ public class Board {
     }
 
     public boolean isTokenNone(int row, int column) {
-        return tokens[row][column] == Token.NONE;
+        return getColorOnPosition(row, column) == Token.NONE;
     }
 }

@@ -13,28 +13,27 @@ public class Turn {
 
     }
 
-
-    public Token getColor() {
-        return players[value].getColor();
-    }
-
-    public Token previousPlayerColor() {
-        return previousPlayer().getColor();
-    }
-
-    public Player getPlayer() {
+    public Player player() {
         return players[value];
     }
 
-    public int alternateValue() {
-        return (value + 1) % numPlayers;
+    public Token playerColor() {
+        return players[value].getColor();
     }
 
     public Player previousPlayer() {
         return players[alternateValue()];
     }
 
-    public void change() {
+    public Token previousPlayerColor() {
+        return previousPlayer().getColor();
+    }
+
+    public int alternateValue() {
+        return (value + 1) % numPlayers;
+    }
+
+    public void changeValue() {
         value = alternateValue();
     }
 
