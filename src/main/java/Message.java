@@ -1,9 +1,9 @@
 public enum Message{
 
-    Turn("Turno del jugador #player"),
-    Draws("La partida ha acabado en empate"),
-    Win("Ha ganado el jugador con las #player"),
-    DropToken("Ingrese la columna (0-6) para colocar su ficha: ");
+    TURN("Turno del jugador #player"),
+    DRAWS("La partida ha acabado en empate"),
+    WIN("Ha ganado el jugador con las #player"),
+    DROP_TOKEN("Ingrese la columna (0-6) para colocar su ficha: ");
 
     private String message;
 

@@ -16,18 +16,18 @@ public class Connect4 {
         Scanner scanner = new Scanner(System.in);
         while(!endGame) {
             board.print();
-            Message.Turn.writeln(turn.playerColor());
+            Message.TURN.writeln(turn.playerColor());
             column = readMove(scanner);
             if(turn.player().put(board, column)) {
                 turn.changeValue();
             }
             if(board.checkVictory(turn.previousPlayerColor())) {
                 board.print();
-                Message.Win.writeln(turn.previousPlayerColor());
+                Message.WIN.writeln(turn.previousPlayerColor());
                 endGame = true;
             }
             if(board.isBoardFull()) {
-                Message.Draws.writeln();
+                Message.DRAWS.writeln();
                 endGame = true;
             }
         }
@@ -37,7 +37,7 @@ public class Connect4 {
     public int readMove(Scanner scanner) {
         int column;
         do {
-            Message.DropToken.writeln();
+            Message.DROP_TOKEN.writeln();
             column = scanner.nextInt();
         } while (column < 0 || column > Constant.numColumns-1);
 
