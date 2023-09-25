@@ -1,3 +1,5 @@
+package model;
+
 public enum Error {
 
     OUT_OF_RANGE("Esta columna no existe"),

@@ -2,45 +2,45 @@
 namespace Connect4 {
 
   class Connect4{
-    - board : Board
-    - turn: Turn
+    - board : model.Board
+    - turn: model.Turn
     + Connect4()
     + play()
     + readMove(Scanner): int
     + {static} main(String[])
   }
 
-  class Board {
-    - tokens: Token[][]
+  class model.Board {
+    - tokens: model.Token[][]
     - solution: Solution
-    ~ Board()
+    ~ model.Board()
     ~ dropPiece(column, token): boolean
     ~ enableColumn(column): boolean
-    ~ checkVictory(Token): boolean
+    ~ checkVictory(model.Token): boolean
     ~ print()
     ~ isBoardFull(): boolean
-    ~ getColorOnPosition(row, column): Token
-    ~ isTokenNone(row, column): Token
+    ~ getColorOnPosition(row, column): model.Token
+    ~ isTokenNone(row, column): model.Token
   }
 
-  class Turn {
+  class model.Turn {
     - NUM_PLAYERS
     - value: Int
-    - players: Player[]
-    ~ Turn(Board)
-    ~ player(): Player
-    ~ playerColor(): Token
-    ~ previousPlayer(): Player
-    ~ previousPlayerColor(): Token
+    - players: model.Player[]
+    ~ model.Turn(model.Board)
+    ~ player(): model.Player
+    ~ playerColor(): model.Token
+    ~ previousPlayer(): model.Player
+    ~ previousPlayerColor(): model.Token
     ~ alternateValue(): int
     ~ changeValue()
   }
 
-  class Player {
-    - color: Token
-    ~ Player(Token)
-    ~ put(Board, columna)
-    ~ getColor(): Token
+  class model.Player {
+    - color: model.Token
+    ~ model.Player(model.Token)
+    ~ put(model.Board, columna)
+    ~ getColor(): model.Token
     ~ askForColumn()
   }
 
@@ -50,21 +50,21 @@ namespace Connect4 {
   }
 
   class Line {
-    - line: Coordinate[Board.LINE_SIZE]
+    - line: Coordinate[model.Board.LINE_SIZE]
     -
 
   }
 
 
-  enum Token {
+  enum model.Token {
     XS
     OS
     NONE
-    ~ Token(value)
+    ~ model.Token(value)
     ~ getToken()
   }
 
-  enum Error {
+  enum model.Error {
     OUT_OF_RANGE
     COLUMN_FULL
     ~ writeLn()
@@ -79,23 +79,23 @@ namespace Connect4 {
   }
 
   class Solution {
-    ~ vertical(Board)
-    ~ horizontal(Board)
-    ~ ascendentDiagonal(Board)
-    ~ descendentDiagonal(Board)
+    ~ vertical(model.Board)
+    ~ horizontal(model.Board)
+    ~ ascendentDiagonal(model.Board)
+    ~ descendentDiagonal(model.Board)
   }
 
-  Connect4 *-down-> Board
-  Connect4 *-down-> Turn
+  Connect4 *-down-> model.Board
+  Connect4 *-down-> model.Turn
   Connect4 .-down-> Message
-  Player *-down-> Board
-  Turn *-down-> "2" Player
-  Player *-down-> Token
-  Board *-down->Solution
-  Board .down->Token
-  Board .down->Error
-  Board .down->Line
-  Board .down->Coordinate
+  model.Player *-down-> model.Board
+  model.Turn *-down-> "2" model.Player
+  model.Player *-down-> model.Token
+  model.Board *-down->Solution
+  model.Board .down->model.Token
+  model.Board .down->model.Error
+  model.Board .down->Line
+  model.Board .down->Coordinate
   Line *-down->Coordinate
 }
 

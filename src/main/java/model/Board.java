@@ -1,10 +1,11 @@
+package model;
 
 public class Board {
     private Token[][] tokens;
     private Solution solution;
 
-    private final int NUM_ROWS = 6;
-    private final int NUM_COLUMNS = 7;
+    public static final int NUM_ROWS = 6;
+    public static final int NUM_COLUMNS = 7;
 
     public Board() {
         tokens = new Token[NUM_ROWS][NUM_COLUMNS];
@@ -16,14 +17,15 @@ public class Board {
         solution = new Solution();
     }
 
-    public boolean dropPiece(int column, Token color) {
+    public Coordinate dropPiece(int column, Token token) {
+        Coordinate coordinate = null;
         for (int row = 0; row < NUM_ROWS; row++) {
             if (tokens[row][column] == Token.NONE) {
-                tokens[row][column] = color;
-                return true;
+                tokens[row][column] = token;
+                coordinate =  new Coordinate(row, column);
             }
         }
-        return false;
+        return coordinate;
     }
 
     public boolean enableColumn(int column) {
@@ -48,7 +50,7 @@ public class Board {
     public void print() {
         for (int row = NUM_ROWS - 1; row >= 0; row--) {
             for (int column = 0; column < NUM_COLUMNS; column++) {
-                System.out.print(tokens[row][column].getToken() + " ");
+                System.out.print(tokens[row][column].getTokenName() + " ");
             }
             System.out.println();
         }
@@ -71,5 +73,10 @@ public class Board {
 
     public boolean isTokenNone(int row, int column) {
         return getColorOnPosition(row, column) == Token.NONE;
+    }
+
+    // Todos los metodos nuevos estan por aqui
+    public Token getTokenAt(Coordinate coordinate) {
+        return tokens[coordinate.getRow()][coordinate.getColumn()];
     }
 }

@@ -1,3 +1,6 @@
+import model.Board;
+import model.Turn;
+
 import java.util.Scanner;
 
 public class Connect4 {

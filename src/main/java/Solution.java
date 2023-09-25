@@ -1,3 +1,6 @@
+import model.Board;
+import model.Token;
+
 public class Solution {
     public boolean checkVictoryHorizontal(Board board, Token color) {
         for (int row = 0; row < Constant.numRows; row++) {
