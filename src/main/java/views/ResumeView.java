@@ -1,6 +1,6 @@
 package views;
 
-import model.Game;
+import model.*;
 
 public class ResumeView extends GameView {
     ResumeView(Game game) {

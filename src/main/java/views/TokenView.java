@@ -6,6 +6,6 @@ public class TokenView {
         if (token.isNone()) {
             string = " ";
         }
-        System.out.println(string); // Valorar poner clase console
+        System.out.println(string);
     }
 }

@@ -1,6 +1,6 @@
 package model;
 public enum Message{
-
+    RESUME("¿Quieres continuar?"),
     TURN("Turno del jugador #player"),
     TITLE("Inicio del juego Connec 4"),
     HORIZONTAL_LINE("----------"),
@@ -22,9 +22,7 @@ public enum Message{
     }
 
     public void writeln(Token player) {
-        System.out.println(this.message.replaceAll("#player", "" + player.getTokenName()));
+        System.out.println(this.message.replaceAll("#player",  player.getTokenName()));
     }
-    public void writeln(String player) {
-        System.out.println(this.message.replaceAll("#player", player));
-    }
+
 }

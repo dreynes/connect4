@@ -10,8 +10,9 @@ public class BoardView {
                 new TokenView().write(game.getToken(new Coordinate(i, j)));
                 Message.VERTICAL_LINE.write();
             }
-            System.out.println(); // Valorar poner clase console
+            System.out.println();
         }
         Message.HORIZONTAL_LINE.writeln();
     }
+
 }

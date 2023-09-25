@@ -16,6 +16,6 @@ public class PlayerView extends GameView {
             column = scanner.nextInt();
         } while (!this.game.enableColumn(column));
 
-        this.game.putToken(this.game.dropPiece(column));
+        this.game.dropPiece(column);
     }
 }

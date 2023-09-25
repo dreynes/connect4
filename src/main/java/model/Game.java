@@ -8,10 +8,6 @@ public class Game {
         this.turn = new Turn(this.board);
     }
 
-    public void putToken(Coordinate coordinate) {
-        this.turn.putToken(coordinate);
-    }
-
     public Player getActivePlayer() {
         return this.turn.getActivePlayer();
     }
@@ -32,10 +28,14 @@ public class Game {
     public boolean enableColumn(int column) {
         return this.board.enableColumn(column);
     }
-    public Coordinate dropPiece(int column) {
-        return this.board.dropPiece(column, this.getActiveToken());
+    public void dropPiece(int column) {
+        this.turn.dropPiece(column);
     }
     public void switchPlayersTurn() {
         this.turn.switchPlayersTurn();
+    }
+    public void reset(){
+        turn.reset();
+        board.reset();
     }
 }

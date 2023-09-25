@@ -11,6 +11,6 @@ public class PlayView extends GameView{
             this.game.switchPlayersTurn();
             new BoardView().write(this.game);
         } while (!this.game.checkConnect4());
-        Message.WIN.writeln(this.game.getActiveTokenName());
+        Message.WIN.writeln(this.game.getActiveToken());
     }
 }

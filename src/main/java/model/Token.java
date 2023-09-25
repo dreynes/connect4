@@ -12,6 +12,12 @@ public enum Token {
         this.value = value;
     }
 
+    public static Token get(int ordinal) {
+        assert ordinal >= 0 && ordinal < Token.NONE.ordinal();
+
+        return Token.values()[ordinal];
+    }
+
     public String getTokenName() {
         return value;
     }

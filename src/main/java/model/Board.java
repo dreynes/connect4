@@ -3,29 +3,23 @@ package model;
 public class Board {
     private Token[][] tokens;
     private Solution solution;
-
+    private Coordinate lastPosition;
     public static final int NUM_ROWS = 6;
     public static final int NUM_COLUMNS = 7;
 
     public Board() {
-        tokens = new Token[NUM_ROWS][NUM_COLUMNS];
-        for (int row = 0; row < NUM_ROWS; row++) {
-            for (int column = 0; column < NUM_COLUMNS; column++) {
-                tokens[row][column] = Token.NONE;
-            }
-        }
+        this.tokens = new Token[NUM_ROWS][NUM_COLUMNS];
+        this.reset();
         solution = new Solution();
     }
 
-    public Coordinate dropPiece(int column, Token token) {
-        Coordinate coordinate = null;
+    public void dropPiece(int column, Token token) {
         for (int row = 0; row < NUM_ROWS; row++) {
-            if (tokens[row][column] == Token.NONE) {
-                tokens[row][column] = token;
-                coordinate =  new Coordinate(row, column);
+            if (this.tokens[row][column] == Token.NONE) {
+                this.tokens[row][column] = token;
+                this.lastPosition =  new Coordinate(row, column);
             }
         }
-        return coordinate;
     }
 
     public boolean enableColumn(int column) {
@@ -33,7 +27,7 @@ public class Board {
             Error.OUT_OF_RANGE.writeln();
             return false;
         }
-        if(tokens[5][column] != Token.NONE) {
+        if(this.tokens[5][column] != Token.NONE) {
             Error.COLUMN_FULL.writeln();
             return false;
         }
@@ -50,7 +44,7 @@ public class Board {
     public void print() {
         for (int row = NUM_ROWS - 1; row >= 0; row--) {
             for (int column = 0; column < NUM_COLUMNS; column++) {
-                System.out.print(tokens[row][column].getTokenName() + " ");
+                System.out.print(this.tokens[row][column].getTokenName() + " ");
             }
             System.out.println();
         }
@@ -59,7 +53,7 @@ public class Board {
     public boolean isBoardFull() {
         for (int column = 0; column < NUM_COLUMNS; column++) {
             for (int row = 0; row < NUM_ROWS; row++) {
-                if (isTokenNone(row, column)) {
+                if (this.isTokenNone(row, column)) {
                     return false;
                 }
             }
@@ -68,15 +62,23 @@ public class Board {
     }
 
     public Token getColorOnPosition(int row, int column) {
-        return tokens[row][column];
+        return this.tokens[row][column];
     }
 
     public boolean isTokenNone(int row, int column) {
-        return getColorOnPosition(row, column) == Token.NONE;
+        return this.getColorOnPosition(row, column) == Token.NONE;
     }
 
     // Todos los metodos nuevos estan por aqui
     public Token getTokenAt(Coordinate coordinate) {
-        return tokens[coordinate.getRow()][coordinate.getColumn()];
+        return this.tokens[coordinate.getRow()][coordinate.getColumn()];
     }
+    public void reset(){
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int column = 0; column < NUM_COLUMNS; column++) {
+                tokens[row][column] = Token.NONE;
+            }
+        }
+    }
+
 }
