@@ -44,6 +44,18 @@ namespace Connect4 {
     ~ askForColumn()
   }
 
+  class Coordinate {
+    - rowPosition
+    - columnPosition
+  }
+
+  class Line {
+    - line: Coordinate[Board.LINE_SIZE]
+    -
+
+  }
+
+
   enum Token {
     XS
     OS
@@ -58,6 +70,14 @@ namespace Connect4 {
     ~ writeLn()
   }
 
+  enum Message {
+    TURN
+    DRAWS
+    WIN
+    DROP_TOKEN
+    ~ writeLn()
+  }
+
   class Solution {
     ~ vertical(Board)
     ~ horizontal(Board)
@@ -67,12 +87,16 @@ namespace Connect4 {
 
   Connect4 *-down-> Board
   Connect4 *-down-> Turn
+  Connect4 .-down-> Message
   Player *-down-> Board
   Turn *-down-> "2" Player
   Player *-down-> Token
   Board *-down->Solution
   Board .down->Token
   Board .down->Error
+  Board .down->Line
+  Board .down->Coordinate
+  Line *-down->Coordinate
 }
 
 @enduml

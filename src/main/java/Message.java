@@ -17,5 +17,4 @@ public enum Message{
     void writeln(Token player) {
         System.out.println(this.message.replaceAll("#player", "" + player.getToken()));
     }
-
 }
