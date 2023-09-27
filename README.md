@@ -1,3 +1,5 @@
 # Connect4
 
-## MIW - DOO
+## Diagrama UML
+
+![diagramaUML](./Connect4_UML.png)
