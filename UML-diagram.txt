@@ -1,106 +1,239 @@
-@startuml Connect4
-namespace Connect4 {
+@startuml
+class Board {
+  -tokens: Token[][]
+  -lastPosition: Coordinate
+  +NUM_ROWS: int
+  +NUM_COLUMNS: int
 
-  class Game{
-    - board : Board
-    - turn: Turn
-    + Game()
-    + getActiveToken(): Token
-    + getActiveTokenName(): String
-    + enableColumn()
-    + dropPiece()
-    + switchPlayersTurn()
-  }
-
-  class Board {
-    - tokens: model.Token[][]
-    - solution: Solution
-    ~ model.Board()
-    ~ dropPiece(column, token): boolean
-    ~ enableColumn(column): boolean
-    ~ checkVictory(model.Token): boolean
-    ~ print()
-    ~ isBoardFull(): boolean
-    ~ getColorOnPosition(row, column): model.Token
-    ~ isTokenNone(row, column): model.Token
-  }
-
-  class Turn {
-    - NUM_PLAYERS
-    - value: Int
-    - players: model.Player[]
-    ~ model.Turn(model.Board)
-    ~ player(): model.Player
-    ~ playerColor(): model.Token
-    ~ previousPlayer(): model.Player
-    ~ previousPlayerColor(): model.Token
-    ~ alternateValue(): int
-    ~ changeValue()
-  }
-
-  class model.Player {
-    - color: model.Token
-    ~ model.Player(model.Token)
-    ~ put(model.Board, columna)
-    ~ getColor(): model.Token
-    ~ askForColumn()
-  }
-
-  class Coordinate {
-    - row
-    - column
-    ~ getRow
-    ~ getColumn
-  }
-
-  class Line {
-    - line: Coordinate[model.Board.LINE_SIZE]
-    -
-
-  }
-
-
-  enum model.Token {
-    XS
-    OS
-    NONE
-    ~ model.Token(value)
-    ~ getToken()
-  }
-
-  enum model.Error {
-    OUT_OF_RANGE
-    COLUMN_FULL
-    ~ writeLn()
-  }
-
-  enum Message {
-    TURN
-    DRAWS
-    WIN
-    DROP_TOKEN
-    ~ writeLn()
-  }
-
-  class Solution {
-    ~ vertical(model.Board)
-    ~ horizontal(model.Board)
-    ~ ascendentDiagonal(model.Board)
-    ~ descendentDiagonal(model.Board)
-  }
-
-  Connect4 *-down-> model.Board
-  Connect4 *-down-> model.Turn
-  Connect4 .-down-> Message
-  model.Player *-down-> model.Board
-  model.Turn *-down-> "2" model.Player
-  model.Player *-down-> model.Token
-  model.Board *-down->Solution
-  model.Board .down->model.Token
-  model.Board .down->model.Error
-  model.Board .down->Line
-  model.Board .down->Coordinate
-  Line *-down->Coordinate
+  +Board()
+  +dropPiece(column: int, token: Token): void
+  +enableColumn(column: int): boolean
+  +checkVictory(color: Token): boolean
+  +checkLineIsConnect4(line: Line): boolean
+  +isLineInRange(line: Line): boolean
+  +isCoordinateInRange(coordinate: Coordinate): boolean
+  +isBoardFull(): boolean
+  +isTokenNone(coordinate: Coordinate): boolean
+  +getTokenAt(coordinate: Coordinate): Token
+  +setTokenAt(coordinate: Coordinate, token: Token): void
+  +reset(): void
 }
 
+enum Token {
+  -value: String
+
+  +XS: Token
+  +OS: Token
+  +NONE: Token
+
+  +Token(value: String)
+  +get(ordinal: int): Token
+  +getTokenName(): String
+  +isNone(): boolean
+}
+
+class Coordinate {
+  -row: int
+  -column: int
+
+  +Coordinate(row: int, column: int)
+  +getRow(): int
+  +getColumn(): int
+  +move(direction: Direction): Coordinate
+  +moveOpposite(direction: Direction): Coordinate
+}
+
+class Direction {
+  -verticalDirection: int
+  -horizontalDirection: int
+
+  +Direction(verticalDirection: int, horizontalDirection: int)
+  +getHorizontalDirection(): int
+  +getVerticalDirection(): int
+}
+
+class Line {
+  -line: Coordinate[]
+  -direction: Direction
+
+  +LINE_LENGTH: int
+
+  +Line(coordinate: Coordinate, direction: Direction)
+  +getHead(): Coordinate
+  +getTail(): Coordinate
+  +getCoordinate(i: int): Coordinate
+  +displace(): void
+}
+
+class Connect4 {
+  -game: Game
+  -view: View
+
+  +Connect4()
+  +play(): void
+  +main(args: String[]): void
+}
+
+class Error {
+  -error: String
+
+  +Error(error: String)
+  +writeln(): void
+}
+
+class Turn {
+  -value: int
+  +NUM_PLAYERS: int
+  -players: Player[]
+  -board: Board
+
+  +Turn(board: Board)
+  +player(): Player
+  +previousPlayer(): Player
+  +previousPlayerToken(): Token
+  +alternateValue(): int
+  +changeValue(): void
+  +getActivePlayer(): Player
+  +getActiveToken(): Token
+  +getActiveTokenName(): String
+  +switchPlayersTurn(): void
+  +dropPiece(column: int): void
+  +reset(): void
+}
+
+class Player {
+  -token: Token
+  -board: Board
+
+  +Player(token: Token, board: Board)
+  +dropPiece(column: int): void
+  +getToken(): Token
+  +getTokenName(): String
+}
+
+enum Message {
+  -message: String
+
+  +RESUME: Message
+  +TURN: Message
+  +TITLE: Message
+  +HORIZONTAL_LINE: Message
+  +VERTICAL_LINE: Message
+  +DRAWS: Message
+  +WIN: Message
+  +DROP_TOKEN: Message
+
+  +Message(message: String)
+  +writeln(): void
+  +writeln(player: Token): void
+}
+
+enum Error {
+  -error: String
+
+  +OUT_OF_RANGE: Error
+  +COLUMN_FULL: Error
+
+  +Error(error: String)
+  +writeln(): void
+}
+
+class Game {
+  -turn: Turn
+  -board: Board
+
+  +Game()
+  +getActivePlayer(): Player
+  +checkConnect4(): boolean
+  +getToken(coordinate: Coordinate): Token
+  +getActiveToken(): Token
+  +getActiveTokenName(): String
+  +enableColumn(column: int): boolean
+  +dropPiece(column: int): void
+  +switchPlayersTurn(): void
+  +reset(): void
+}
+
+class View {
+  -game: Game
+  -startView: StartView
+  -playView: PlayView
+  -resumeView: ResumeView
+
+  +View(game: Game)
+  +start(): void
+  +play(): void
+  +resume(): boolean
+}
+
+class BoardView {
+  +write(game: Game): void
+}
+
+abstract GameView {
+  -game: Game
+
+  +GameView(game: Game)
+}
+
+class PlayerView {
+  +PlayerView(game: Game)
+  +interact(): void
+}
+
+class PlayView {
+  +PlayView(game: Game)
+  +interact(): void
+}
+
+class ResumeView {
+  +ResumeView(game: Game)
+  +interact(): boolean
+}
+
+class StartView {
+  +StartView(game: Game)
+  +interact(): void
+}
+
+class TokenView {
+  +write(token: Token): void
+}
+
+class YesNoDialog {
+  -AFFIRMATIVE: char
+  -NEGATIVE: char
+  -MESSAGE: String
+  -answer: String
+
+  +read(message: String): void
+  +isAffirmative(): boolean
+  +isNegative(): boolean
+}
+
+Connect4 *-- Game
+Connect4 *-- View
+Board ..> Token
+Board ..> Coordinate
+Board ..> Direction
+Board ..> Line
+Coordinate ..> Direction
+Game *-- Turn
+Game *-- Board
+Turn *--"2" Player
+Board ..> Error
+Line *-- Coordinate
+Line *-- Direction
+Message ..> Token
+Player *-- Token
+Player *-- Board
+BoardView ..> Game
+GameView *-- Game
+PlayerView --|> GameView
+PlayView --|> GameView
+PlayView ..> Message
+ResumeView --|> GameView
+ResumeView ..> YesNoDialog
+StartView --|> GameView
+TokenView ..> Token
 @enduml
