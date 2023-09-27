@@ -23,8 +23,8 @@ public class Coordinate {
 
 
     public Coordinate moveOposite(Direction direction){
-        return new Coordinate(this.getRow() + direction.getHorizontalDirection()*(-1),
-                this.getColumn() + direction.getVerticalDirection()*(-1));
+        return new Coordinate(this.getRow() + (direction.getHorizontalDirection()*(-1)),
+                this.getColumn() + (direction.getVerticalDirection()*(-1)));
     }
 
 }

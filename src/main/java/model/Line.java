@@ -29,8 +29,8 @@ public class Line {
         return this.line[i];
     }
     public void displace() {
-        for(int i = 1; i<line.length-1; i++) {
-            line[i] = line[i-1].moveOposite(direction);
+        for(int i = 0; i<line.length; i++) {
+            line[i] = line[i].moveOposite(direction);
         }
 
     }

@@ -66,9 +66,9 @@ public class Board {
     public boolean isCoordinateInRange(Coordinate coordinate) {
         int row = coordinate.getRow();
         int column = coordinate.getColumn();
-      return row< NUM_ROWS &&
-              row > 0 &&
-              column > 0 &&
+      return row < NUM_ROWS &&
+              row >= 0 &&
+              column >= 0 &&
               column < NUM_COLUMNS;
 
     }
