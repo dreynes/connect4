@@ -1,10 +1,10 @@
 package model;
 import views.View;
-import model.*;
-public class Connect4 {
-    private Game game;
 
-    private View view;
+public class Connect4 {
+    private final Game game;
+
+    private final View view;
 
     public Connect4() {
         this.game = new Game();

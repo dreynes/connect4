@@ -1,7 +1,7 @@
 package model;
 
 public class Board {
-    private Token[][] tokens;
+    private final Token[][] tokens;
     private Coordinate lastPosition;
     public static final int NUM_ROWS = 6;
     public static final int NUM_COLUMNS = 7;
@@ -15,13 +15,13 @@ public class Board {
         boolean dropped = false;
         int row = 0;
         do{
-            if (this.tokens[row][column] == Token.NONE) {
-                this.tokens[row][column] = token;
-                this.lastPosition =  new Coordinate(row, column);
+            if (this.getTokenAt(new Coordinate(row, column)) == Token.NONE) {
+                this.setTokenAt(new Coordinate(row, column), token);
+                this.lastPosition = new Coordinate(row, column);
                 dropped = true;
             }
             row++;
-        } while(!dropped && row<NUM_ROWS);
+        } while(!dropped && row < NUM_ROWS);
     }
 
     public boolean enableColumn(int column) {
@@ -29,7 +29,7 @@ public class Board {
             Error.OUT_OF_RANGE.writeln();
             return false;
         }
-        if(this.tokens[5][column] != Token.NONE) {
+        if(this.tokens[NUM_ROWS - 1][column] != Token.NONE) {
             Error.COLUMN_FULL.writeln();
             return false;
         }
@@ -49,7 +49,7 @@ public class Board {
         if(!this.isLineInRange(line))
             return false;
         boolean connect4 = true;
-        for(int i = 0; (i<4)&&connect4; i++){
+        for(int i = 0; i < 4 && connect4; i++){
             connect4 = getTokenAt(this.lastPosition) == getTokenAt(line.getCoordinate(i));
         }
         if(!connect4) {
@@ -59,27 +59,15 @@ public class Board {
         return connect4;
     }
     public boolean isLineInRange(Line line) {
-        return isCoordinateInRange(line.getCoordinate(0)) &&
-                isCoordinateInRange(line.getCoordinate(3));
+        return isCoordinateInRange(line.getHead()) &&
+                isCoordinateInRange(line.getTail());
    }
 
     public boolean isCoordinateInRange(Coordinate coordinate) {
         int row = coordinate.getRow();
         int column = coordinate.getColumn();
-      return row < NUM_ROWS &&
-              row >= 0 &&
-              column >= 0 &&
-              column < NUM_COLUMNS;
-
-    }
-
-    public void print() {
-        for (int row = NUM_ROWS - 1; row >= 0; row--) {
-            for (int column = 0; column < NUM_COLUMNS; column++) {
-                System.out.print(this.tokens[row][column].getTokenName() + " ");
-            }
-            System.out.println();
-        }
+        return row < NUM_ROWS && row >= 0 &&
+               column < NUM_COLUMNS && column >= 0;
     }
 
     public boolean isBoardFull() {
@@ -109,7 +97,7 @@ public class Board {
     public void reset(){
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int column = 0; column < NUM_COLUMNS; column++) {
-                tokens[row][column] = Token.NONE;
+                this.setTokenAt(new Coordinate(row, column), Token.NONE);
             }
         }
     }
