@@ -1,8 +1,8 @@
 package model;
 
 public class Coordinate {
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     public Coordinate(int row, int column) {
         this.row = row;
@@ -18,14 +18,12 @@ public class Coordinate {
 
     public Coordinate move(Direction direction){
         return new Coordinate(this.getRow() + direction.getHorizontalDirection(),
-                                this.getColumn() + direction.getVerticalDirection());
+                            this.getColumn() + direction.getVerticalDirection());
     }
 
-
-    public Coordinate moveOposite(Direction direction){
+    public Coordinate moveOpposite(Direction direction){
         return new Coordinate(this.getRow() + (direction.getHorizontalDirection()*(-1)),
-                this.getColumn() + (direction.getVerticalDirection()*(-1)));
+                            this.getColumn() + (direction.getVerticalDirection()*(-1)));
     }
-
 }
 

@@ -1,6 +1,5 @@
 package model;
 
-import java.net.NoRouteToHostException;
 
 public enum Direction {
 
@@ -13,8 +12,8 @@ public enum Direction {
     NORTHWEST(-1,-1),
     NORTHEAST(-1,1);
 
-    private int verticalDirection;
-    private int horizontalDirection;
+    private final int verticalDirection;
+    private final int horizontalDirection;
     Direction(int verticalDirection, int horizontalDirection) {
         this.horizontalDirection = horizontalDirection;
         this.verticalDirection = verticalDirection;
@@ -26,5 +25,4 @@ public enum Direction {
     public int getVerticalDirection() {
         return this.verticalDirection;
     }
-
 }

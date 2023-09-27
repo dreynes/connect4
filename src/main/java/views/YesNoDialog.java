@@ -7,9 +7,6 @@ public class YesNoDialog {
 
     private static final char AFFIRMATIVE = 'y';
     private static final char NEGATIVE = 'n';
-    private static final String SUFFIX = "? (" +
-            YesNoDialog.AFFIRMATIVE+"/" +
-            YesNoDialog.NEGATIVE+"): ";
     private static final String MESSAGE = "The value must be '" +
             YesNoDialog.AFFIRMATIVE + "' or '" +
             YesNoDialog.NEGATIVE + "'";
@@ -17,7 +14,6 @@ public class YesNoDialog {
 
     public void read(String message) {
         assert message != null;
-
 
         boolean ok;
         Scanner scanner = new Scanner(System.in);

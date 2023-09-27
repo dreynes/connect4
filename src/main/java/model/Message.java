@@ -1,24 +1,21 @@
 package model;
 public enum Message{
-    RESUME("¿Quieres continuar?"),
-    TURN("Turno del jugador #player"),
-    TITLE("Inicio del juego Connec 4"),
+    RESUME("¿Do you want to repeat?"),
+    TURN("Turn of player: #player"),
+    TITLE("Connect 4"),
     HORIZONTAL_LINE("----------"),
     VERTICAL_LINE("|"),
-    DRAWS("La partida ha acabado en empate"),
-    WIN("Ha ganado el jugador con las #player"),
-    DROP_TOKEN("Ingrese la columna (0-6) para colocar su ficha: ");
+    DRAWS("It's been a DRAW."),
+    WIN("PLAYER #player WINS!!!"),
+    DROP_TOKEN("Choose a column (0-6) to drop your token: ");
 
-    private String message;
+    private final String message;
 
     Message(String message) {
         this.message = message;
     }
     public void writeln() {
         System.out.println(this.message);
-    }
-    public void write() {
-        System.out.print(this.message);
     }
 
     public void writeln(Token player) {

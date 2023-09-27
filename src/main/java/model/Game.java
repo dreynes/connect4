@@ -1,8 +1,8 @@
 package model;
 
 public class Game {
-    private Turn turn;
-    private Board board;
+    private final Turn turn;
+    private final Board board;
     public Game () {
         this.board = new Board();
         this.turn = new Turn(this.board);

@@ -6,7 +6,7 @@ public enum Token {
     OS("o"),
     NONE("-");
 
-    private String value;
+    private final String value;
 
     Token(String value){
         this.value = value;

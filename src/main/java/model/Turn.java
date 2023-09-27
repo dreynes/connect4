@@ -4,16 +4,15 @@ public class Turn {
 
     private int value;
     public static final int NUM_PLAYERS = 2;
-    private Player[] players;
+    private final Player[] players;
 
-    private Board board;
+    private final Board board;
 
     public Turn(Board board) {
         this.board = board;
-        players = new Player[NUM_PLAYERS];
-        reset();
-        value = 0;
-
+        this.players = new Player[NUM_PLAYERS];
+        this.reset();
+        this.value = 0;
     }
 
     public Player player() {
@@ -29,22 +28,22 @@ public class Turn {
     }
 
     public int alternateValue() {
-        return (value + 1) % Turn.NUM_PLAYERS;
+        return (this.value + 1) % Turn.NUM_PLAYERS;
     }
 
     public void changeValue() {
-        value = alternateValue();
+        this.value = this.alternateValue();
     }
 
 
     public Player getActivePlayer() {
-        return players[value];
+        return this.players[value];
     }
     public Token getActiveToken() {
-        return players[value].getToken();
+        return this.players[value].getToken();
     }
     public String getActiveTokenName() {
-        return players[value].getTokenName();
+        return this.players[this.value].getTokenName();
     }
     public void switchPlayersTurn() {
         if (!this.board.checkVictory(this.getActiveToken())) {
