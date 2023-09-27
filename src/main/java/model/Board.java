@@ -12,13 +12,16 @@ public class Board {
     }
 
     public void dropPiece(int column, Token token) {
-
-        for (int row = NUM_ROWS-1; row >= 0; row--) {
+        boolean dropped = false;
+        int row = 0;
+        do{
             if (this.tokens[row][column] == Token.NONE) {
                 this.tokens[row][column] = token;
                 this.lastPosition =  new Coordinate(row, column);
+                dropped = true;
             }
-        }
+            row++;
+        } while(!dropped && row<NUM_ROWS);
     }
 
     public boolean enableColumn(int column) {
@@ -45,9 +48,9 @@ public class Board {
     public boolean checkLineIsConnect4(Line line){
         if(!this.isLineInRange(line))
             return false;
-        boolean connect4 = false;
-        for(int i = 1; (i<4)&&!(connect4); i++){
-            connect4 = getTokenAt(line.getCoordinate(i-1)) == getTokenAt(line.getCoordinate(i));
+        boolean connect4 = true;
+        for(int i = 0; (i<4)&&connect4; i++){
+            connect4 = getTokenAt(this.lastPosition) == getTokenAt(line.getCoordinate(i));
         }
         if(!connect4) {
             line.displace();

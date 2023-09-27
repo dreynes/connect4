@@ -12,7 +12,7 @@ public class Line {
         int originRow;
         line = new Coordinate[4];
         line[0] = coordinate;
-        for(int i = 1; i<line.length-1; i++) {
+        for(int i = 1; i<line.length; i++) {
             line[i] = line[i-1].move(direction);
         }
     }
