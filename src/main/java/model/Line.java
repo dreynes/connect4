@@ -12,8 +12,8 @@ public class Line {
         int originRow;
         line = new Coordinate[4];
         line[0] = coordinate;
-        for(int i = 1; i<LineSize-1; i++) {
-            line[i] = line[i-1].move();
+        for(int i = 1; i<line.length-1; i++) {
+            line[i] = line[i-1].move(direction);
         }
     }
     public int getStartCoordinate(int coordinate){
@@ -25,7 +25,13 @@ public class Line {
         return answer;
     }
 
-    public void desplaze() {
+    public Coordinate getCoordinate(int i){
+        return this.line[i];
+    }
+    public void displace() {
+        for(int i = 1; i<line.length-1; i++) {
+            line[i] = line[i-1].moveOposite(direction);
+        }
 
     }
 }

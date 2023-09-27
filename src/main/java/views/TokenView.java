@@ -4,8 +4,8 @@ public class TokenView {
     void write(Token token) {
         String string = token.getTokenName();
         if (token.isNone()) {
-            string = " ";
+            string = "-";
         }
-        System.out.println(string);
+        System.out.print(string);
     }
 }

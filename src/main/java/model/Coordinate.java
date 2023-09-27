@@ -15,5 +15,17 @@ public class Coordinate {
     public int getColumn() {
         return this.column;
     }
+
+    public Coordinate move(Direction direction){
+        return new Coordinate(this.getRow() + direction.getHorizontalDirection(),
+                                this.getColumn() + direction.getVerticalDirection());
+    }
+
+
+    public Coordinate moveOposite(Direction direction){
+        return new Coordinate(this.getRow() + direction.getHorizontalDirection()*(-1),
+                this.getColumn() + direction.getVerticalDirection()*(-1));
+    }
+
 }
 
