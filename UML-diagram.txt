@@ -1,16 +1,18 @@
 @startuml Connect4
 namespace Connect4 {
 
-  class Connect4{
-    - board : model.Board
-    - turn: model.Turn
-    + Connect4()
-    + play()
-    + readMove(Scanner): int
-    + {static} main(String[])
+  class Game{
+    - board : Board
+    - turn: Turn
+    + Game()
+    + getActiveToken(): Token
+    + getActiveTokenName(): String
+    + enableColumn()
+    + dropPiece()
+    + switchPlayersTurn()
   }
 
-  class model.Board {
+  class Board {
     - tokens: model.Token[][]
     - solution: Solution
     ~ model.Board()
@@ -23,7 +25,7 @@ namespace Connect4 {
     ~ isTokenNone(row, column): model.Token
   }
 
-  class model.Turn {
+  class Turn {
     - NUM_PLAYERS
     - value: Int
     - players: model.Player[]
@@ -45,8 +47,10 @@ namespace Connect4 {
   }
 
   class Coordinate {
-    - rowPosition
-    - columnPosition
+    - row
+    - column
+    ~ getRow
+    ~ getColumn
   }
 
   class Line {

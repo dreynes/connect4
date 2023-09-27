@@ -101,6 +101,11 @@ public class Board {
     public Token getTokenAt(Coordinate coordinate) {
         return this.tokens[coordinate.getRow()][coordinate.getColumn()];
     }
+
+    public void setTokenAt(Coordinate coordinate, Token token) {
+        this.tokens[coordinate.getRow()][coordinate.getColumn()] = token;
+    }
+
     public void reset(){
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int column = 0; column < NUM_COLUMNS; column++) {
