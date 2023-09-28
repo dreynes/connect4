@@ -228,6 +228,7 @@ Message ..> Token
 Player *-- Token
 Player *-- Board
 BoardView ..> Game
+BoardView ..> TokenView
 GameView *-- Game
 PlayerView --|> GameView
 PlayView --|> GameView

@@ -2,9 +2,9 @@ package model;
 
 public enum Token {
 
-    XS("x"),
-    OS("o"),
-    NONE("-");
+    XS("\uD83D\uDFE1"),
+    OS("\uD83D\uDD34"),
+    NONE("⬛");
 
     private final String value;
 
