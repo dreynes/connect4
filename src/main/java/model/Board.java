@@ -39,27 +39,28 @@ public class Board {
     public boolean checkVictory() {
         boolean answer = false;
         for(Direction direction : Direction.values()){
-            answer = answer || checkLineIsConnect4(new Line(lastPosition, direction));
+            answer = answer || this.checkLineIsConnect4(new Line(lastPosition, direction));
         }
         return answer;
     }
 
     public boolean checkLineIsConnect4(Line line){
-        if(!this.isLineInRange(line))
+        if(!this.isLineInRange(line)) {
             return false;
+        }
         boolean connect4 = true;
         for(int i = 0; i < 4 && connect4; i++){
-            connect4 = getTokenAt(this.lastPosition) == getTokenAt(line.getCoordinate(i));
+            connect4 = this.getTokenAt(this.lastPosition) == this.getTokenAt(line.getCoordinate(i));
         }
         if(!connect4) {
             line.displace();
-            checkLineIsConnect4(line);
+            this.checkLineIsConnect4(line);
         }
         return connect4;
     }
     public boolean isLineInRange(Line line) {
-        return isCoordinateInRange(line.getHead()) &&
-                isCoordinateInRange(line.getTail());
+        return this.isCoordinateInRange(line.getHead()) &&
+                this.isCoordinateInRange(line.getTail());
    }
 
     public boolean isCoordinateInRange(Coordinate coordinate) {
@@ -99,5 +100,4 @@ public class Board {
             }
         }
     }
-
 }
