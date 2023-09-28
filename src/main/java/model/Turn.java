@@ -46,7 +46,7 @@ public class Turn {
         return this.players[this.value].getTokenName();
     }
     public void switchPlayersTurn() {
-        if (!this.board.checkVictory(this.getActiveToken())) {
+        if (!this.board.checkVictory()) {
             this.changeValue();
         }
     }

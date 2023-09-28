@@ -36,7 +36,7 @@ public class Board {
         return true;
     }
 
-    public boolean checkVictory(Token color) {
+    public boolean checkVictory() {
         boolean answer = false;
         for(Direction direction : Direction.values()){
             answer = answer || checkLineIsConnect4(new Line(lastPosition, direction));

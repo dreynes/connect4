@@ -13,7 +13,7 @@ public class Game {
     }
 
     public boolean checkConnect4() {
-        return this.board.checkVictory(this.getActiveToken());
+        return this.board.checkVictory();
     }
     public Token getToken(Coordinate coordinate) {
         return this.board.getTokenAt(coordinate);
