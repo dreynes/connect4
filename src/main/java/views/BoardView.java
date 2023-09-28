@@ -10,6 +10,9 @@ public class BoardView {
             }
             System.out.println();
         }
+        for (int i = 0; i < Board.NUM_COLUMNS; i++) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.println();
     }
-
 }
