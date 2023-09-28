@@ -14,8 +14,5 @@ public class Player {
     public Token getToken() {
         return token;
     }
-    public String getTokenName() {
-        return token.getTokenName();
-    }
 
 }

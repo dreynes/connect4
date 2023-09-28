@@ -21,7 +21,4 @@ public enum Token {
     public String getTokenName() {
         return value;
     }
-    public boolean isNone() {
-        return this == NONE;
-    }
 }

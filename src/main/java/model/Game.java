@@ -8,10 +8,6 @@ public class Game {
         this.turn = new Turn(this.board);
     }
 
-    public Player getActivePlayer() {
-        return this.turn.getActivePlayer();
-    }
-
     public boolean checkConnect4() {
         return this.board.checkVictory();
     }
@@ -26,9 +22,6 @@ public class Game {
 
     public Token getActiveToken() {
         return this.turn.getActiveToken();
-    }
-    public String getActiveTokenName() {
-        return this.turn.getActiveTokenName();
     }
     public boolean enableColumn(int column) {
         return this.board.enableColumn(column);

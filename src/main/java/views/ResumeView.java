@@ -9,7 +9,8 @@ public class ResumeView extends GameView {
 
     public boolean interact() {
         YesNoDialog isResumed = new YesNoDialog();
-        isResumed.read(Message.RESUME.toString());
+        isResumed.read(Message.RESUME.value());
+
         if (isResumed.isAffirmative()) {
             this.game.reset();
         }

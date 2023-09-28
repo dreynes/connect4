@@ -14,19 +14,6 @@ public class Turn {
         this.reset();
         this.value = 0;
     }
-
-    public Player player() {
-        return this.players[value];
-    }
-
-    public Player previousPlayer() {
-        return this.players[alternateValue()];
-    }
-
-    public Token previousPlayerToken() {
-        return this.previousPlayer().getToken();
-    }
-
     public int alternateValue() {
         return (this.value + 1) % Turn.NUM_PLAYERS;
     }
@@ -41,9 +28,6 @@ public class Turn {
     }
     public Token getActiveToken() {
         return this.players[value].getToken();
-    }
-    public String getActiveTokenName() {
-        return this.players[this.value].getTokenName();
     }
     public void switchPlayersTurn() {
         if (!this.board.checkVictory()) {
