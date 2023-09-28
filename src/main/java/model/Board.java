@@ -44,7 +44,6 @@ public class Board {
         return answer;
     }
 
-
     public boolean checkLineIsConnect4(Line line){
         if(!this.isLineInRange(line))
             return false;
@@ -80,7 +79,6 @@ public class Board {
         }
         return true;
     }
-
 
     public boolean isTokenNone(Coordinate coordinate) {
         return this.getTokenAt(coordinate) == Token.NONE;

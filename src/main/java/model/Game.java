@@ -15,6 +15,11 @@ public class Game {
     public boolean checkConnect4() {
         return this.board.checkVictory();
     }
+
+    public boolean isBoardFull() {
+        return this.board.isBoardFull();
+    }
+
     public Token getToken(Coordinate coordinate) {
         return this.board.getTokenAt(coordinate);
     }

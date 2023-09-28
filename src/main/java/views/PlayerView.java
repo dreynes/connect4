@@ -12,7 +12,7 @@ public class PlayerView extends GameView {
         Scanner scanner = new Scanner(System.in);
         int column;
         do {
-            Message.DROP_TOKEN.writeln();
+            Message.DROP_TOKEN.writeln(this.game.getActiveToken());
             column = scanner.nextInt();
         } while (!this.game.enableColumn(column));
 

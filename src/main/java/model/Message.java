@@ -7,7 +7,7 @@ public enum Message{
     VERTICAL_LINE("|"),
     DRAWS("It's been a DRAW."),
     WIN("PLAYER #player WINS!!!"),
-    DROP_TOKEN("Choose a column (0-6) to drop your token: ");
+    DROP_TOKEN("[#player turn] Choose a column (0-6) to drop your token: ");
 
     private final String message;
 

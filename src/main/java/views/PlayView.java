@@ -10,7 +10,7 @@ public class PlayView extends GameView{
             new PlayerView(this.game).interact();
             this.game.switchPlayersTurn();
             new BoardView().write(this.game);
-        } while (!this.game.checkConnect4());
+        } while (!this.game.checkConnect4() && !this.game.isBoardFull());
         Message.WIN.writeln(this.game.getActiveToken());
     }
 }
