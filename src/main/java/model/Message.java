@@ -1,6 +1,6 @@
 package model;
 public enum Message{
-    RESUME("¿Do you want to repeat?"),
+    RESUME("¿Do you want to repeat? (y/n)"),
     TITLE("Connect 4"),
     DRAW("It's been a DRAW."),
     WIN("PLAYER #player WINS!!!"),

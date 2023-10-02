@@ -45,19 +45,26 @@ public class Board {
     }
 
     public boolean checkLineIsConnect4(Line line){
-        if(!this.isLineInRange(line)) {
-            return false;
-        }
-        boolean connect4 = true;
-        for(int i = 0; i < 4 && connect4; i++){
-            connect4 = this.getTokenAt(this.lastPosition) == this.getTokenAt(line.getCoordinate(i));
-        }
-        if(!connect4) {
-            line.displace();
-            this.checkLineIsConnect4(line);
-        }
-        return connect4;
+       boolean isConnect4 = false;
+       for(int j = 0; j<4 && !isConnect4; j++ ) {
+           if (!this.isLineInRange(line)) {
+               return false;
+           }
+           isConnect4 = isLineConnect4(line);
+           line.displace();
+       }
+        return isConnect4;
     }
+
+    public boolean isLineConnect4(Line line){
+        boolean lineConnect4 = true;
+        for (int i = 0; i < 4 && lineConnect4; i++) {
+            lineConnect4 = this.getTokenAt(this.lastPosition) == this.getTokenAt(line.getCoordinate(i));
+        }
+        return lineConnect4;
+
+    }
+
     public boolean isLineInRange(Line line) {
         return this.isCoordinateInRange(line.getHead()) &&
                 this.isCoordinateInRange(line.getTail());

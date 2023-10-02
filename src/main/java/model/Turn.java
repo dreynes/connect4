@@ -14,14 +14,9 @@ public class Turn {
         this.reset();
         this.value = 0;
     }
-    public int alternateValue() {
-        return (this.value + 1) % Turn.NUM_PLAYERS;
-    }
-
     public void changeValue() {
-        this.value = this.alternateValue();
+        this.value = (this.value + 1) % Turn.NUM_PLAYERS;
     }
-
 
     public Player getActivePlayer() {
         return this.players[value];
