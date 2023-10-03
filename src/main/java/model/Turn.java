@@ -29,8 +29,8 @@ public class Turn {
             this.changeValue();
         }
     }
-    public void dropPiece(int column){
-        this.getActivePlayer().dropPiece(column);
+    public void putPiece(int column){
+        this.getActivePlayer().putPiece(column);
     }
     public void reset(){
         for (int i = 0; i < Turn.NUM_PLAYERS; i++) {

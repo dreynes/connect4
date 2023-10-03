@@ -2,23 +2,21 @@ package model;
 
 public enum Token {
 
-    XS("\uD83D\uDFE1"),
-    OS("\uD83D\uDD34"),
-    NONE("⬛");
+    XS("YELLOW"),
+    OS("RED"),
+    NONE("NONE");
 
-    private final String value;
+    private final String color;
 
-    Token(String value){
-        this.value = value;
+    Token(String color){
+        this.color = color;
     }
 
     public static Token get(int ordinal) {
         assert ordinal >= 0 && ordinal < Token.NONE.ordinal();
-
         return Token.values()[ordinal];
     }
-
-    public String getTokenName() {
-        return value;
+    public String getColor() {
+        return color;
     }
 }

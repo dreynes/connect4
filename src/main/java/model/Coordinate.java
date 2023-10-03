@@ -17,13 +17,15 @@ public class Coordinate {
     }
 
     public Coordinate move(Direction direction){
-        return new Coordinate(this.getRow() + direction.getHorizontalDirection(),
-                            this.getColumn() + direction.getVerticalDirection());
+        return new Coordinate(this.getRow() + direction.getVerticalDirection(),
+                            this.getColumn() + direction.getHorizontalDirection());
     }
 
-    public Coordinate moveOpposite(Direction direction){
-        return new Coordinate(this.getRow() + (direction.getHorizontalDirection()*(-1)),
-                            this.getColumn() + (direction.getVerticalDirection()*(-1)));
+    public boolean isCoordinateInRange(int numRows, int numColumns) {
+        int row = this.getRow();
+        int column = this.getColumn();
+        return row < numRows && row >= 0 &&
+                column < numColumns && column >= 0;
     }
 }
 

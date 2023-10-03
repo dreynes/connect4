@@ -28,9 +28,16 @@ public class Line {
     public Coordinate getCoordinate(int i){
         return this.line[i];
     }
+
+    public boolean isLineInRange(int numRows, int numColumns) {
+        return this.getHead().isCoordinateInRange(numRows, numColumns) &&
+                this.getTail().isCoordinateInRange(numRows, numColumns);
+    }
+
     public void displace() {
+        Direction invertDirection = direction.invertDirection(direction.ordinal());
         for(int i = 0; i < line.length; i++) {
-            line[i] = line[i].moveOpposite(direction);
+           line[i] = line[i].move(invertDirection);
         }
     }
 }

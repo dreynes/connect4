@@ -16,7 +16,7 @@ public enum Message{
     }
 
     public void writeln(Token player) {
-        System.out.println(this.message.replaceAll("#player",  player.getTokenName()));
+        System.out.println(this.message.replaceAll("#player",  player.getColor()));
     }
     public String value() {
         return this.message;

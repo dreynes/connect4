@@ -26,8 +26,8 @@ public class Game {
     public boolean enableColumn(int column) {
         return this.board.enableColumn(column);
     }
-    public void dropPiece(int column) {
-        this.turn.dropPiece(column);
+    public void putPiece(int column) {
+        this.turn.putPiece(column);
     }
     public void switchPlayersTurn() {
         this.turn.switchPlayersTurn();

@@ -8,8 +8,8 @@ public class Player {
         this.token = token;
     }
 
-    public void dropPiece(int column) {
-        this.board.dropPiece(column, this.token);
+    public void putPiece(int column) {
+        this.board.putPiece(column, this.token);
     }
     public Token getToken() {
         return token;
